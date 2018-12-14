@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { createStore, applyMiddleware } from "redux";
+//applyMiddleware is a store enhancer
 import thunkMiddleware from "redux-thunk";
 import logger from "redux-logger";
 import rootreducer from "./store/reducer/rootReducer";

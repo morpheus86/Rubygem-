@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import createProject from "../../store/actions/projectActions";
+import { connect } from "react-redux";
 
-export default class Login extends Component {
+class CreateProject extends Component {
   state = {
     title: "",
     content: ""
@@ -15,7 +17,8 @@ export default class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     //whatever is submited
-    console.log(this.state);
+    this.props.createProject(this.state);
+    //this.state is the project we are trying to create
   };
   render() {
     return (
@@ -42,3 +45,14 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapDispatch = dispatch => {
+  return {
+    createProject: project => dispatch(createProject(project))
+  };
+};
+//this mapdispatch will retur the createProject function in our action creator where we will make some kind of async call to the database we want to access.
+export default connect(
+  null,
+  mapDispatch
+)(CreateProject);
