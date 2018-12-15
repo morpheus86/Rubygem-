@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import createProject from "../../store/actions/projectActions";
 import { connect } from "react-redux";
-
+import { Redirect } from "react-router-dom";
 class CreateProject extends Component {
   state = {
     title: "",
@@ -21,6 +21,8 @@ class CreateProject extends Component {
     //this.state is the project we are trying to create
   };
   render() {
+    const { auth } = this.props;
+    if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
@@ -45,6 +47,11 @@ class CreateProject extends Component {
     );
   }
 }
+const mapState = state => {
+  return {
+    auth: state.firebase.auth
+  };
+};
 
 const mapDispatch = dispatch => {
   return {
@@ -53,6 +60,6 @@ const mapDispatch = dispatch => {
 };
 //this mapdispatch will retur the createProject function in our action creator where we will make some kind of async call to the database we want to access.
 export default connect(
-  null,
+  mapState,
   mapDispatch
 )(CreateProject);

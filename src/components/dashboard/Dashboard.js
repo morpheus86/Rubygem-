@@ -3,11 +3,13 @@ import Notifications from "./Notifications";
 import ProjectList from "../projects/ProjectList";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
+import { Redirect } from "react-router-dom";
 import { compose } from "redux";
 
 class Dashboard extends Component {
   render() {
-    const { projects } = this.props;
+    const { projects, auth } = this.props;
+    if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div className="dashboard">
         <div className="row">
@@ -26,10 +28,9 @@ class Dashboard extends Component {
 //By doing mapStateToProps, we are just adding these new property (state from the store) to the props object
 
 const mapState = state => {
-  console.log(state);
-
   return {
-    projects: state.firestore.ordered.projects
+    projects: state.firestore.ordered.projects,
+    auth: state.firebase.auth
   };
 };
 

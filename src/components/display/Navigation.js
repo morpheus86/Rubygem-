@@ -2,19 +2,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Signin from "./Signin";
 import SignOut from "./SignOut";
+import { connect } from "react-redux";
 
-const Navigation = () => {
+const Navigation = props => {
+  const { auth } = props;
+  const links = auth.uid ? <Signin /> : <SignOut />;
   return (
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
         <Link to="/" className="brand-logo">
           Home
         </Link>
-        <Signin />
-        <SignOut />
+        {links}
       </div>
     </nav>
   );
 };
 
-export default Navigation;
+const mapState = state => {
+  return {
+    auth: state.firebase.auth
+  };
+};
+export default connect(mapState)(Navigation);
