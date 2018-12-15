@@ -2,17 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { createStore, applyMiddleware } from "redux";
-//applyMiddleware is a store enhancer
-import thunkMiddleware from "redux-thunk";
-import logger from "redux-logger";
-import rootreducer from "./store/reducer/rootReducer";
-import { Provider } from "react-redux";
-//provider binding layer. alows us to connect react and redux.
 import * as serviceWorker from "./serviceWorker";
+import { createStore } from "redux";
+import rootReducer from "./store/reducer/rootReducer";
+import { middleware } from "./store/reducer/rootReducer";
 
-const middleware = applyMiddleware(logger, thunkMiddleware);
-const store = createStore(rootreducer, middleware);
+import { Provider } from "react-redux";
+
+const store = createStore(rootReducer, middleware);
 ReactDOM.render(
   <Provider store={store}>
     <App />

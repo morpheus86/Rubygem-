@@ -1,12 +1,25 @@
 import authReducer from "./authReducer";
 import projectReducer from "./projectReducer";
-import { combineReducers } from "redux";
+import { combineReducers, applyMiddleware, compose } from "redux";
+import thunkMiddleware from "redux-thunk";
+import logger from "redux-logger";
+import { reduxFirestore, getFirestore } from "redux-firestore";
+import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
+import fbConfig from "../../config/fbConfig";
+import { firestoreReducer } from "redux-firestore";
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  //in our state of the store we will have the authReducer property update info on the auth property
-  //the projectReducer update info on the project property inside the state object
-  project: projectReducer
+  project: projectReducer,
+  firestore: firestoreReducer
 });
+export const middleware = compose(
+  applyMiddleware(
+    logger,
+    thunkMiddleware.withExtraArgument({ getFirebase, getFirestore })
+  ),
+  reduxFirestore(fbConfig),
+  reactReduxFirebase(fbConfig)
+);
 
 export default rootReducer;
