@@ -4,12 +4,12 @@ import "firebase/auth";
 // Initialize Firebase
 
 var config = {
-  apiKey: process.env.REACT_APP_API,
+  apiKey: "AIzaSyCbicDKt1r_pkdWOS756fwM6UwBXNNDjsk",
   authDomain: "boilerplate-845c7.firebaseapp.com",
   databaseURL: "https://boilerplate-845c7.firebaseio.com",
   projectId: "boilerplate-845c7",
   storageBucket: "boilerplate-845c7.appspot.com",
-  messagingSenderId: process.env.REACT_APP_MESSENGER
+  messagingSenderId: "1036506062646"
 };
 
 firebase.initializeApp(config);
