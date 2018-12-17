@@ -3,8 +3,6 @@ import "firebase/firestore";
 import "firebase/auth";
 // Initialize Firebase
 
-console.log(process.env.NODE_ENV);
-
 var config = {
   apiKey: process.env.REACT_APP_GOOGLE_API,
   authDomain: "boilerplate-845c7.firebaseapp.com",

@@ -20,14 +20,11 @@ app.get("/hello", (req, res, next) => {
 });
 app.get("/api/**/*", (req, res) => {
   const url = `${RUBY_GEMS_URL}${req.originalUrl}`;
-  console.log("url", url);
-  console.log("request", req);
   request.get(url, (err, response, body) => {
     if (response.statusCode === 400) {
       res.send([]);
     } else {
       res.send(body);
-      console.log(body);
     }
   });
 });
