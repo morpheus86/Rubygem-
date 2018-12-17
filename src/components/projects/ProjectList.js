@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
-const ProjectList = ({ projects, auth }) => {
+const ProjectList = ({ auth, ruby }) => {
   if (!auth.uid) return <Redirect to="/signin" />;
   return (
     <div className="project-list section">
-      {projects &&
-        projects.map(project => {
+      {ruby &&
+        ruby.map((gem, idx) => {
           return (
-            <Link to={"/project/" + project.id} key={project.id}>
-              <ProjectSummary project={project} />
+            <Link to={"/project/" + idx} key={idx}>
+              <ProjectSummary gem={gem} />
             </Link>
           );
         })}

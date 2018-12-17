@@ -5,19 +5,20 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { Redirect } from "react-router-dom";
 import { compose } from "redux";
+import SearchBar from "../search/SearchBar";
 
 class Dashboard extends Component {
   render() {
-    const { projects, auth } = this.props;
+    const { projects, auth, ruby } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div className="dashboard">
         <div className="row">
           <div className="col s12 m6">
-            <ProjectList projects={projects} />
+            <ProjectList ruby={ruby} />
           </div>
           <div className="col s12 m5 offset-m1">
-            <Notifications />
+            <SearchBar />
           </div>
         </div>
       </div>
@@ -30,7 +31,8 @@ class Dashboard extends Component {
 const mapState = state => {
   return {
     projects: state.firestore.ordered.projects,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    ruby: state.ruby.gems
   };
 };
 

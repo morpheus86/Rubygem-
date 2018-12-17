@@ -1,45 +1,71 @@
-import React from "react";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-const ProjectDetails = props => {
-  const { project, auth } = props;
-  if (!auth.uid) return <Redirect to="/signin" />;
-  if (project) {
-    return (
-      <div className="container section project-ProjectDetails">
-        <div className="card z-depth-0">
-          <div className="card-content">
-            <span className="card-title">{project.title}</span>
-            <p>{project.content}</p>
-          </div>
-          <div className="card-action grey lighten-4 grey-text">
-            <div>
-              posted by {project.authorFirstName} {project.authorLastName}
+class ProjectDetails extends Component {
+  render() {
+    const { auth, gems } = this.props;
+    const dependencies = gems.dependencies.development
+      ? gems.dependencies.development.map((el, idx) => {
+          return (
+            <li key={idx}>
+              <Link to={"/gem" + el.name} className="list-dependencies">
+                <strong>{el.name}</strong>" {el.requirements} "
+              </Link>
+            </li>
+          );
+        })
+      : null;
+
+    if (!auth.uid) return <Redirect to="/signin" />;
+    if (gems) {
+      return (
+        <div className="container section project-ProjectDetails">
+          <div className="card z-depth-0">
+            <div className="card-content">
+              <span className="card-title">{gems.name}</span>
             </div>
-            <div>5 November, 12PM</div>
+            <div className="card-action grey lighten-4 grey-text">
+              <div>posted by {gems.authors}</div>
+              <div>Downloaded {gems.downloads}</div>
+            </div>
+            <div className="loverflow">
+              <div className="l-colspan--l colspan--l--has-border">
+                <div className="gem-intro">
+                  <div className="gem_desc">
+                    <p>{gems.info}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="dependencies">
+              <h3 className="dependencies-heading">Dependencies Development</h3>
+              <div className="list-dependencies">{dependencies}</div>
+            </div>
+            <favorite-star active />
           </div>
         </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className="container center">
-        <p>Loading project...</p>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="container center">
+          <p>Loading project...</p>
+        </div>
+      );
+    }
   }
-};
+}
 
 const mapState = (state, ownProps) => {
   const id = ownProps.match.params.id;
-  const projects = state.firestore.data.projects;
-  const project = projects ? projects[id] : null;
+  const ruby = state.ruby.gems;
+  const gem = ruby ? ruby[id] : null;
   return {
-    project: project,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    gems: gem
   };
 };
 
