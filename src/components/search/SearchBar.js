@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchRuby } from "../../store/actions/rubyActions";
+
 class SearchBar extends Component {
   state = {
     input: ""

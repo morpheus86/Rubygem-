@@ -28,7 +28,11 @@ export const middleware = compose(
     thunkMiddleware.withExtraArgument({ getFirebase, getFirestore })
   ),
   reduxFirestore(fbConfig),
-  reactReduxFirebase(fbConfig, { attachAuthIsReady: true })
+  reactReduxFirebase(fbConfig, {
+    useFirestoreForProfile: true,
+    userProfile: "users",
+    attachAuthIsReady: true
+  })
 );
 
 export default rootReducer;

@@ -1,11 +1,26 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { compose } from "redux";
+import { saveGem } from "../../store/actions/saveActionFavGem";
 import { firestoreConnect } from "react-redux-firebase";
+// import SaveFav from "../favorite/SaveFav";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 class ProjectDetails extends Component {
+  state = {
+    isToggleOn: true
+  };
+  handleClick = () => {
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+  };
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log(this.props.addGem(this.props.gem));
+    this.props.addGem(this.props.gems);
+  };
   render() {
     const { auth, gems } = this.props;
     const dependencies = gems.dependencies.development
@@ -45,8 +60,17 @@ class ProjectDetails extends Component {
               <h3 className="dependencies-heading">Dependencies Development</h3>
               <div className="list-dependencies">{dependencies}</div>
             </div>
-            <favorite-star active />
           </div>
+          <form onSubmit={this.handleSubmit} className="white">
+            <button
+              className="btn pink lighten-1 z-depth-0"
+              onClick={this.handleClick}
+            >
+              {this.state.isToggleOn
+                ? "Save as favorite"
+                : "REMOVE as favorite"}
+            </button>
+          </form>
         </div>
       );
     } else {
@@ -69,7 +93,16 @@ const mapState = (state, ownProps) => {
   };
 };
 
+const mapDispatch = dispatch => {
+  return {
+    addGem: fav => dispatch(saveGem(fav))
+  };
+};
+
 export default compose(
-  connect(mapState),
-  firestoreConnect([{ collection: "projects" }])
+  connect(
+    mapState,
+    mapDispatch
+  ),
+  firestoreConnect([{ collection: "favorites" }])
 )(ProjectDetails);

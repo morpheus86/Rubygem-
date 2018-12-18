@@ -1,5 +1,6 @@
 const initialState = {
-  gems: []
+  gems: [],
+  favoriteGem: []
 };
 const fetchingGemReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -11,6 +12,14 @@ const fetchingGemReducer = (state = initialState, action) => {
       };
     case "FETCHING_GEMS_ERROR":
       console.log("fetching error");
+      return state;
+    case "SAVE_GEM":
+      return {
+        ...state,
+        favoriteGem: action.favorites
+      };
+    case "SAVE_GEM_ERROR":
+      console.log("save gem error");
       return state;
     default:
       return state;

@@ -5,8 +5,8 @@ import SignOut from "./SignOut";
 import { connect } from "react-redux";
 
 const Navigation = props => {
-  const { auth } = props;
-  const links = auth.uid ? <Signin /> : <SignOut />;
+  const { auth, profile } = props;
+  const links = auth.uid ? <Signin profile={profile} /> : <SignOut />;
   return (
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
@@ -21,7 +21,8 @@ const Navigation = props => {
 
 const mapState = state => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
   };
 };
 export default connect(mapState)(Navigation);
