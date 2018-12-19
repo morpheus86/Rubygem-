@@ -21,6 +21,14 @@ const fetchingGemReducer = (state = initialState, action) => {
     case "SAVE_GEM_ERROR":
       console.log("save gem error");
       return state;
+    case "REMOVE_GEM_SUCCESS":
+      return {
+        ...state,
+        favoriteGem: action.remove
+      };
+    case "REMOVE_GEM_FAIL":
+      console.log("Removal failed");
+      return state;
     default:
       return state;
   }

@@ -1,37 +1,37 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { saveGem } from "../../store/actions/saveActionFavGem";
+import { removeGem } from "../../store/actions/saveActionFavGem";
 
-class SaveFav extends Component {
+class DeleteFav extends Component {
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addGem(this.props.gem);
+    console.log("PROPSSS", this.props);
+    this.props.delete(this.props.fav);
   };
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="white">
         <button className="btn pink lighten-1 z-depth-0">
-          Save to Favorite
+          Remove from favorite
         </button>
       </form>
     );
   }
 }
 
-const mapState = (state, ownProps) => {
-  const id = ownProps.match.params.id;
-  const ruby = state.ruby.gems;
-  const gem = ruby ? ruby[id] : null;
+const mapState = state => {
   return {
-    gem
+    auth: state.firebase.auth
   };
 };
+
 const mapDispatch = dispatch => {
   return {
-    addGem: fav => dispatch(saveGem(fav))
+    delete: gem => dispatch(removeGem(gem))
   };
 };
+
 export default connect(
   mapState,
   mapDispatch
-)(SaveFav);
+)(DeleteFav);

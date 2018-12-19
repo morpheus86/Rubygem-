@@ -1,24 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { compose } from "redux";
 import { saveGem } from "../../store/actions/saveActionFavGem";
-import { firestoreConnect } from "react-redux-firebase";
-// import SaveFav from "../favorite/SaveFav";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+// import SaveFav from "../favorite/SaveFav";
 
-class ProjectDetails extends Component {
-  state = {
-    isToggleOn: true
-  };
-  handleClick = () => {
-    this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn
-    }));
-  };
+class RubyGemDetails extends Component {
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.props.addGem(this.props.gem));
     this.props.addGem(this.props.gems);
   };
   render() {
@@ -38,7 +27,7 @@ class ProjectDetails extends Component {
     if (!auth.uid) return <Redirect to="/signin" />;
     if (gems) {
       return (
-        <div className="container section project-ProjectDetails">
+        <div className="container section project-RubyGemDetails">
           <div className="card z-depth-0">
             <div className="card-content">
               <span className="card-title">{gems.name}</span>
@@ -62,13 +51,8 @@ class ProjectDetails extends Component {
             </div>
           </div>
           <form onSubmit={this.handleSubmit} className="white">
-            <button
-              className="btn pink lighten-1 z-depth-0"
-              onClick={this.handleClick}
-            >
-              {this.state.isToggleOn
-                ? "Save as favorite"
-                : "REMOVE as favorite"}
+            <button className="btn pink lighten-1 z-depth-0">
+              Save to favorite
             </button>
           </form>
         </div>
@@ -99,10 +83,7 @@ const mapDispatch = dispatch => {
   };
 };
 
-export default compose(
-  connect(
-    mapState,
-    mapDispatch
-  ),
-  firestoreConnect([{ collection: "favorites" }])
-)(ProjectDetails);
+export default connect(
+  mapState,
+  mapDispatch
+)(RubyGemDetails);

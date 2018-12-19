@@ -14,7 +14,8 @@ import { Provider } from "react-redux";
 
 const persistConfig = {
   key: "root",
-  storage
+  storage,
+  blacklist: ["auth"]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

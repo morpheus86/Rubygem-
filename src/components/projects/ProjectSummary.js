@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectDetails from "./ProjectDetails";
+// import RubyGemDetails from "./RubyGemDetails";
 
 const ProjectSummary = ({ gem }) => {
   return (

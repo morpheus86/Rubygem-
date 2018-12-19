@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
-const ProjectList = ({ auth, ruby }) => {
+const RubyList = ({ auth, ruby }) => {
   if (!auth.uid) return <Redirect to="/signin" />;
   return (
     <div className="project-list section">
@@ -26,4 +26,4 @@ const mapState = state => {
   };
 };
 
-export default connect(mapState)(ProjectList);
+export default connect(mapState)(RubyList);

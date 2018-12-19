@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ProjectList from "../projects/ProjectList";
+import ProjectList from "../projects/RubyList";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { Redirect } from "react-router-dom";
