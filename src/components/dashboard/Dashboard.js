@@ -34,5 +34,5 @@ const mapState = state => {
 
 export default compose(
   connect(mapState),
-  firestoreConnect([{ collection: "projects" }])
+  firestoreConnect([{ collection: "users" }])
 )(Dashboard);

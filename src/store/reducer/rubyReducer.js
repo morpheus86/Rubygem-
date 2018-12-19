@@ -1,11 +1,11 @@
 const initialState = {
   gems: [],
-  favoriteGem: []
+  favoriteGem: [],
+  ruby: []
 };
 const fetchingGemReducer = (state = initialState, action) => {
   switch (action.type) {
     case "FETCH_RUBY":
-      console.log("ACTIONS", action);
       return {
         ...state,
         gems: action.gems
@@ -28,6 +28,16 @@ const fetchingGemReducer = (state = initialState, action) => {
       };
     case "REMOVE_GEM_FAIL":
       console.log("Removal failed");
+      return state;
+    case "FETCH_RUBY_DEPENDENCY":
+      return {
+        ...state,
+        ruby: action.gem
+      };
+
+    // return state;
+    case "FETCHING_DEPENDENCY_ERROR":
+      console.log("ERRRRRRR");
       return state;
     default:
       return state;

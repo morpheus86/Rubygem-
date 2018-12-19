@@ -7,6 +7,7 @@ import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
 import FavGems from "./components/favorite/FavGems";
 import "./App.css";
+import Dependency from "./components/search/Dependency";
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route path="/signin" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route path="/favorite" component={FavGems} />
+            <Route path="/dependency" component={Dependency} />
           </Switch>
         </div>
       </BrowserRouter>

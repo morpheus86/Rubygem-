@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { saveGem } from "../../store/actions/saveActionFavGem";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 // import SaveFav from "../favorite/SaveFav";
+import DependencySearch from "../search/DependencySeach";
 
 class RubyGemDetails extends Component {
   handleSubmit = e => {
@@ -15,11 +15,9 @@ class RubyGemDetails extends Component {
     const dependencies = gems.dependencies.development
       ? gems.dependencies.development.map((el, idx) => {
           return (
-            <li key={idx}>
-              <Link to={"/gem" + el.name} className="list-dependencies">
-                <strong>{el.name}</strong>" {el.requirements} "
-              </Link>
-            </li>
+            <div key={idx}>
+              <DependencySearch el={el} />
+            </div>
           );
         })
       : null;
@@ -71,6 +69,7 @@ const mapState = (state, ownProps) => {
   const id = ownProps.match.params.id;
   const ruby = state.ruby.gems;
   const gem = ruby ? ruby[id] : null;
+  // console.log(gem);
   return {
     auth: state.firebase.auth,
     gems: gem
