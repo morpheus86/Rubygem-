@@ -1,7 +1,7 @@
 import React from "react";
 // import RubyGemDetails from "./RubyGemDetails";
 
-const ProjectSummary = ({ gem }) => {
+const RubySummary = ({ gem }) => {
   return (
     <div className="card z-depth-0 project-summary">
       <div className="card-content grey-text text-darken-3">
@@ -13,4 +13,4 @@ const ProjectSummary = ({ gem }) => {
   );
 };
 
-export default ProjectSummary;
+export default RubySummary;

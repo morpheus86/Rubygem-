@@ -8,7 +8,6 @@ class SearchBar extends Component {
   };
   handleChange = e => {
     this.setState({
-      //grab whatever is type in the input
       [e.target.id]: e.target.value
     });
   };
@@ -33,7 +32,6 @@ class SearchBar extends Component {
 }
 
 const mapState = state => {
-  console.log(state);
   return {
     rubyGems: state.ruby.gems
   };

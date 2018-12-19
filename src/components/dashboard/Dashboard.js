@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ProjectList from "../projects/RubyList";
+import RubyList from "../projects/RubyList";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { Redirect } from "react-router-dom";
@@ -8,13 +8,13 @@ import SearchBar from "../search/SearchBar";
 
 class Dashboard extends Component {
   render() {
-    const { projects, auth, ruby } = this.props;
+    const { auth, ruby } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div className="dashboard">
         <div className="row">
           <div className="col s12 m6">
-            <ProjectList ruby={ruby} />
+            <RubyList ruby={ruby} />
           </div>
           <div className="col s12 m5 offset-m1">
             <SearchBar />
@@ -25,11 +25,8 @@ class Dashboard extends Component {
   }
 }
 
-//By doing mapStateToProps, we are just adding these new property (state from the store) to the props object
-
 const mapState = state => {
   return {
-    projects: state.firestore.ordered.projects,
     auth: state.firebase.auth,
     ruby: state.ruby.gems
   };

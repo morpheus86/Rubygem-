@@ -1,5 +1,5 @@
 import React from "react";
-import ProjectSummary from "./ProjectSummary";
+import RubySummary from "./RubySummary";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
@@ -12,7 +12,7 @@ const RubyList = ({ auth, ruby }) => {
         ruby.map((gem, idx) => {
           return (
             <Link to={"/project/" + idx} key={idx}>
-              <ProjectSummary gem={gem} />
+              <RubySummary gem={gem} />
             </Link>
           );
         })}

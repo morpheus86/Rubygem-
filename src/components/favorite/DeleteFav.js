@@ -5,7 +5,6 @@ import { removeGem } from "../../store/actions/saveActionFavGem";
 class DeleteFav extends Component {
   handleSubmit = e => {
     e.preventDefault();
-    console.log("PROPSSS", this.props);
     this.props.delete(this.props.fav);
   };
   render() {
