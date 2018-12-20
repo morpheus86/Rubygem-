@@ -9,7 +9,6 @@ import { createStore } from "redux";
 import storage from "redux-persist/lib/storage";
 import rootReducer from "./store/reducer/rootReducer";
 import { middleware } from "./store/reducer/rootReducer";
-
 import { Provider } from "react-redux";
 
 const persistConfig = {
@@ -21,6 +20,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = createStore(persistedReducer, middleware);
+
 const persistor = persistStore(store);
 
 store.firebaseAuthIsReady.then(() => {

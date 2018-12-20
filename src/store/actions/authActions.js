@@ -19,6 +19,7 @@ export const signOut = () => async (dispatch, getState, { getFirebase }) => {
     const firebase = await getFirebase();
     await firebase.auth().signOut();
     dispatch({ type: "SIGNOUT_SUCCESS" });
+    dispatch({ type: "RESET" });
   } catch (error) {
     console.log(error);
   }

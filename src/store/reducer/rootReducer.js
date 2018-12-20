@@ -12,6 +12,7 @@ import {
 } from "react-redux-firebase";
 import fbConfig from "../../config/fbConfig";
 import { firestoreReducer } from "redux-firestore";
+import reduxReset from "redux-reset";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -32,7 +33,8 @@ export const middleware = compose(
     useFirestoreForProfile: true,
     userProfile: "users",
     attachAuthIsReady: true
-  })
+  }),
+  reduxReset()
 );
 
 export default rootReducer;
