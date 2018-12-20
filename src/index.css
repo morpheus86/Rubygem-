@@ -9,7 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url(/img/448909.jpg) no-repeat;
+  background: url(/img/448909.jpg);
   background-size: 100%;
   background-position: bottom;
   min-height: 100%;
