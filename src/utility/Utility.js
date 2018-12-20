@@ -1,7 +1,6 @@
 import React from "react";
 
 const Utility = props => {
-  console.log(props);
   return (
     <div className="container section project-RubyGemDetails">
       <div className="card z-depth-0">
