@@ -23,6 +23,24 @@ form button,
 form h5 {
   margin: 20px 0;
 }
+
+.home__heading {
+  margin-left: auto;
+  position: relative;
+  width: 90%;
+  font-weight: 200;
+  line-height: 1.2;
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+
+.home-search {
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  width: 90%;
+}
 input[type="text"]:not(.browser-default):focus:not([readonly]),
 input[type="email"]:not(.browser-default):focus:not([readonly]),
 input[type="password"]:not(.browser-default):focus:not([readonly]),

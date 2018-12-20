@@ -9,15 +9,18 @@ import SearchBar from "../search/SearchBar";
 class Dashboard extends Component {
   render() {
     const { auth, ruby } = this.props;
-    if (!auth.uid) return <Redirect to="/signin" />;
+
     return (
       <div className="dashboard">
-        <div className="row">
-          <div className="col s12 m6">
-            <RubyList ruby={ruby} />
-          </div>
-          <div className="col s12 m5 offset-m1">
+        <div className="container">
+          <h1 className="home__heading">Find RubyGems</h1>
+          <div className="home-search">
             <SearchBar />
+          </div>
+          <div className="row">
+            <div className="col s12 m6">
+              <RubyList ruby={ruby} />
+            </div>
           </div>
         </div>
       </div>

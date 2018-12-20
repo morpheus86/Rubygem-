@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 const RubyList = ({ auth, ruby }) => {
-  if (!auth.uid) return <Redirect to="/signin" />;
+  // if (!auth.uid) return <Redirect to="/signin" />;
   return (
     <div className="project-list section">
       {ruby &&

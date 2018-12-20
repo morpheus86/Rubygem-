@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { saveGem } from "../../store/actions/saveActionFavGem";
+import DependencySearch from "../search/DependencySeach";
 import { connect } from "react-redux";
 
 class Dependency extends Component {
@@ -9,6 +10,16 @@ class Dependency extends Component {
   };
   render() {
     const { gems } = this.props;
+    console.log(gems);
+    const dependencies = gems.dependencies.development
+      ? gems.dependencies.development.map((el, idx) => {
+          return (
+            <div key={idx}>
+              <DependencySearch el={el} />
+            </div>
+          );
+        })
+      : null;
 
     if (gems) {
       return (
@@ -35,6 +46,8 @@ class Dependency extends Component {
                     </div>
                   </div>
                 </div>
+                <h3>Dependencies</h3>
+                {dependencies}
               </div>
             </div>
           </div>
