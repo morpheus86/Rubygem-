@@ -12,21 +12,18 @@ class RubyGemDetails extends Component {
   };
   render() {
     const { auth, gems } = this.props;
+    const dependencies = gems.dependencies.development
+      ? gems.dependencies.development.map((el, idx) => {
+          return (
+            <div key={idx}>
+              <DependencySearch el={el} />
+            </div>
+          );
+        })
+      : null;
 
-    if (!auth.uid) {
-      return <Redirect to="/signin" />;
-    } else {
-      const dependencies = gems.dependencies.development
-        ? gems.dependencies.development.map((el, idx) => {
-            return (
-              <div key={idx}>
-                <DependencySearch el={el} />
-              </div>
-            );
-          })
-        : null;
-
-      if (gems) {
+    if (gems) {
+      if (auth.uid) {
         return (
           <div className="container section project-RubyGemDetails">
             <div className="card z-depth-0">
@@ -47,11 +44,24 @@ class RubyGemDetails extends Component {
         );
       } else {
         return (
-          <div className="container center">
-            <p>Loading project...</p>
+          <div className="container section project-RubyGemDetails">
+            <div className="card z-depth-0">
+              <div className="card-content">
+                <Utility gem={gems} />
+                <h3>Dependencies</h3>
+                {dependencies}
+                <div />
+              </div>
+            </div>
           </div>
         );
       }
+    } else {
+      return (
+        <div className="container center">
+          <p>Loading project...</p>
+        </div>
+      );
     }
   }
 }
