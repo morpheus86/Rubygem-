@@ -10,7 +10,6 @@ class Login extends Component {
   };
   handleChange = e => {
     this.setState({
-      //grab whatever is type in the input
       [e.target.id]: e.target.value
     });
   };

@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import RubyList from "../projects/RubyList";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
-import { Redirect } from "react-router-dom";
 import { compose } from "redux";
 import SearchBar from "../search/SearchBar";
 
 class Dashboard extends Component {
   render() {
-    const { auth, ruby } = this.props;
+    const { ruby } = this.props;
 
     return (
       <div className="dashboard">

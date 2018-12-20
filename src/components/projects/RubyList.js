@@ -1,7 +1,6 @@
 import React from "react";
 import RubySummary from "./RubySummary";
 import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 const RubyList = ({ auth, ruby }) => {

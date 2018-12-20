@@ -10,7 +10,6 @@ class Dependency extends Component {
   };
   render() {
     const { gems } = this.props;
-    console.log(gems);
     const dependencies = gems.dependencies.development
       ? gems.dependencies.development.map((el, idx) => {
           return (
@@ -68,7 +67,6 @@ class Dependency extends Component {
   }
 }
 const mapState = state => {
-  console.log(state);
   return {
     gems: state.ruby.ruby
   };
