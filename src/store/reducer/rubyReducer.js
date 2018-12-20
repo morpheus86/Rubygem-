@@ -34,10 +34,8 @@ const fetchingGemReducer = (state = initialState, action) => {
         ...state,
         ruby: action.gem
       };
-
-    // return state;
     case "FETCHING_DEPENDENCY_ERROR":
-      console.log("ERRRRRRR");
+      console.log("Dependency could not be fetched");
       return state;
     default:
       return state;

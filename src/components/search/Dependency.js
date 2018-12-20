@@ -1,50 +1,59 @@
-import React from "react";
+import React, { Component } from "react";
+import { saveGem } from "../../store/actions/saveActionFavGem";
 import { connect } from "react-redux";
 
-const Dependency = props => {
-  console.log(props);
-  const { gems } = props;
-  if (gems) {
-    return (
-      <div className="container section project-RubyGemDetails">
-        <div className="card z-depth-0">
-          <div className="card-content">
-            <span className="card-title">{gems.name}</span>
-          </div>
-          <div className="card-action grey lighten-4 grey-text">
-            <div>posted by {gems.authors}</div>
-            <div>Downloaded {gems.downloads}</div>
-          </div>
-          <div className="loverflow">
-            <div className="l-colspan--l colspan--l--has-border">
-              <div className="gem-intro">
-                <div className="gem_desc">
-                  <p>{gems.info}</p>
+class Dependency extends Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.addGem(this.props.gems);
+  };
+  render() {
+    const { gems } = this.props;
+
+    if (gems) {
+      return (
+        <div>
+          <div className="container section project-RubyGemDetails">
+            <div className="card z-depth-0">
+              <div className="card-content">
+                <div className="l-wrap--b">
+                  <h1 className="t-display page__heading">
+                    {gems.name}
+                    <i className="page__subheading">{gems.version}</i>
+                  </h1>
+                </div>
+                <div className="card-action grey lighten-4 grey-text">
+                  <div>posted by {gems.authors}</div>
+                  <div>Downloaded {gems.downloads}</div>
+                </div>
+                <div className="loverflow">
+                  <div className="l-colspan--l colspan--l--has-border">
+                    <div className="gemss-intro">
+                      <div className="gem_desc">
+                        <p>{gems.info}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="dependencies">
-            <h3 className="dependencies-heading">Dependencies Development</h3>
-            <div className="list-dependencies">gem</div>
-          </div>
+          <form onSubmit={this.handleSubmit} className="white">
+            <button className="btn pink lighten-1 z-depth-0">
+              Save to favorite
+            </button>
+          </form>
         </div>
-        {/* <form onSubmit={this.handleSubmit} className="white">
-          <button className="btn pink lighten-1 z-depth-0">
-            Save to favorite
-          </button>
-        </form> */}
-      </div>
-    );
-  } else {
-    return (
-      <div className="container center">
-        <p>Loading project...</p>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="container center">
+          <p>Loading project...</p>
+        </div>
+      );
+    }
   }
-};
-
+}
 const mapState = state => {
   console.log(state);
   return {
@@ -52,4 +61,13 @@ const mapState = state => {
   };
 };
 
-export default connect(mapState)(Dependency);
+const mapDispatch = dispatch => {
+  return {
+    addGem: fav => dispatch(saveGem(fav))
+  };
+};
+
+export default connect(
+  mapState,
+  mapDispatch
+)(Dependency);

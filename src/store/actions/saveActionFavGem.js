@@ -1,5 +1,5 @@
 import firebase from "firebase";
-export const saveGem = (favorite, state = []) => async (
+export const saveGem = favorite => async (
   dispatch,
   getState,
   { getFirebase, getFirestore }

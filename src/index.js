@@ -12,23 +12,23 @@ import { middleware } from "./store/reducer/rootReducer";
 
 import { Provider } from "react-redux";
 
-// const persistConfig = {
-//   key: "root",
-//   storage,
-//   blacklist: ["auth"]
-// };
+const persistConfig = {
+  key: "root",
+  storage,
+  blacklist: ["auth"]
+};
 
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(rootReducer, middleware);
-// const persistor = persistStore(store);
+const store = createStore(persistedReducer, middleware);
+const persistor = persistStore(store);
 
 store.firebaseAuthIsReady.then(() => {
   ReactDOM.render(
     <Provider store={store}>
-      {/* <PersistGate loading={null} persistor={persistor}> */}
-      <App />
-      {/* </PersistGate> */}
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>,
     document.getElementById("root")
   );
