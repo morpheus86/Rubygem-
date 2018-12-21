@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { saveGem } from "../../store/actions/saveActionFavGem";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 import Utility from "../../utility/Utility";
 import DependencySearch from "../search/DependencySeach";
 
