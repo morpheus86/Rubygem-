@@ -6,11 +6,13 @@ import { connect } from "react-redux";
 class Dependency extends Component {
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.props);
     if (this.props.profileFav.some(el => el.name === this.props.gems.name)) {
       alert("gem already saved");
     } else {
       alert("gem saved to your favorite");
       this.props.addGem(this.props.gems);
+      this.props.history.push("/");
     }
   };
   render() {

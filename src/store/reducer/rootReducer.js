@@ -1,5 +1,4 @@
 import authReducer from "./authReducer";
-import projectReducer from "./projectReducer";
 import fetchingGemReducer from "./rubyReducer";
 import { combineReducers, applyMiddleware, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
@@ -16,7 +15,6 @@ import reduxReset from "redux-reset";
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  project: projectReducer,
   ruby: fetchingGemReducer,
   firestore: firestoreReducer,
   firebase: firebaseReducer

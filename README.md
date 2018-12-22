@@ -1,44 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project Overview
 
-## Available Scripts
+This app was created in response to a code challenge described here:
 
-In the project directory, you can run:
+You're going to be building a Ruby Gems search feature. Hit the search API and have the relevant gems show with the description of them, and links to their listed dependencies within this interface. Your app should be able to keep track of “favorites”, which are Gems the user has starred.
 
-### `npm start`
+There are a few other notes and requirements:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You should be able to add a search result to favorites in your UI.
+There should be some way to review and remove favorites.
+localStorage is fine for storage
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Overview
 
-### `npm test`
+App Description
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This app is designed to fetch ruby gems from the rubygem api depending on what is inputed in the search bar. The application is built with an emphasis for a user to enjoy and navigate smoothly.
 
-### `npm run build`
+The app run on React, Redux and firebase cloud firestore which manages the data structure.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Features / selling point
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+. The application can be used without signing up or logging in. Once logged in, the user can save specific ruby gem to their favorite page where they can navigate to, in order to manage their favorite page by either going back to that specific ruby gem or remove it from their favorites page.
+. The UI makes use of CSS, materialize-ui framework and media queries to provide a design that is visually pleasing on mobile or desktop devices.
+. The UI can easily be maintained since the flow of information are managed between props and our redux store.
+. Redux was used in this project for his ability to not only organize data but also for his single source of truth to manage our data.
+. The application help you in finding specifics ruby gem but also let you add it as a favorite in order to come back to it by going to your favorite page.
+. The application allows you to not only check for specifics ruby gems but also to find out more about their dependencies for more info about what was used to build the gem.
+. The app also make use of react router for a smooth transition between pages and also allows us to make use of router specific property such as match params and push to redirect to specific pages.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Area for improvement
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Testing:
+I am not comfortable enough with testing React component. Therefore, the app building part came first with some testing after.

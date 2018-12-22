@@ -12,6 +12,7 @@ class RubyGemDetails extends Component {
     } else {
       alert("Ruby Gem saved to your favorite");
       this.props.addGem(this.props.gems);
+      this.props.history.push("/");
     }
   };
   render() {
