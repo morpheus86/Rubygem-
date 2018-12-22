@@ -6,7 +6,12 @@ import { connect } from "react-redux";
 class Dependency extends Component {
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addGem(this.props.gems);
+    if (this.props.profileFav.some(el => el.name === this.props.gems.name)) {
+      alert("gem already saved");
+    } else {
+      alert("gem saved to your favorite");
+      this.props.addGem(this.props.gems);
+    }
   };
   render() {
     const { gems, auth } = this.props;
@@ -103,7 +108,8 @@ class Dependency extends Component {
 const mapState = state => {
   return {
     gems: state.ruby.ruby,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    profileFav: state.firebase.profile.favorites
   };
 };
 

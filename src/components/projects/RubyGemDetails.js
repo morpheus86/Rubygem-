@@ -7,7 +7,12 @@ import DependencySearch from "../search/DependencySeach";
 class RubyGemDetails extends Component {
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addGem(this.props.gems);
+    if (this.props.profileFav.some(el => el.name === this.props.gems.name)) {
+      alert("Ruby Gem already saved");
+    } else {
+      alert("Ruby Gem saved to your favorite");
+      this.props.addGem(this.props.gems);
+    }
   };
   render() {
     const { auth, gems } = this.props;
@@ -71,7 +76,8 @@ const mapState = (state, ownProps) => {
   const gem = ruby ? ruby[id] : null;
   return {
     auth: state.firebase.auth,
-    gems: gem
+    gems: gem,
+    profileFav: state.firebase.profile.favorites
   };
 };
 
