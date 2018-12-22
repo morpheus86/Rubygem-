@@ -6,9 +6,7 @@ You're going to be building a Ruby Gems search feature. Hit the search API and h
 
 There are a few other notes and requirements:
 
-You should be able to add a search result to favorites in your UI.
-There should be some way to review and remove favorites.
-localStorage is fine for storage
+You should be able to add a search result to favorites in your UI. There should be some way to review and remove favorites. localStorage is fine for storage
 
 Overview
 
@@ -20,15 +18,16 @@ The app run on React, Redux and firebase cloud firestore which manages the data 
 
 Features / selling point
 
-. The application can be used without signing up or logging in. Once logged in, the user can save specific ruby gem to their favorite page where they can navigate to, in order to manage their favorite page by either going back to that specific ruby gem or remove it from their favorites page.
-. The UI makes use of CSS, materialize-ui framework and media queries to provide a design that is visually pleasing on mobile or desktop devices.
-. The UI can easily be maintained since the flow of information are managed between props and our redux store.
-. Redux was used in this project for his ability to not only organize data but also for his single source of truth to manage our data.
-. The application help you in finding specifics ruby gem but also let you add it as a favorite in order to come back to it by going to your favorite page.
-. The application allows you to not only check for specifics ruby gems but also to find out more about their dependencies for more info about what was used to build the gem.
-. The app also make use of react router for a smooth transition between pages and also allows us to make use of router specific property such as match params and push to redirect to specific pages.
+· The application can be used without signing up or logging in. Once logged in, the user can save specific ruby gem to their favorite page where they can navigate to, in order to manage their favorite page by either going back to that specific ruby gem or remove it from their favorites page.
+
+· The UI makes use of CSS, materialize-ui framework and media queries to provide a design that is visually pleasing on mobile or desktop devices.
+
+· The UI can easily be maintained since the flows of information are managed between props and our redux store.
+
+· Redux was used in this project for its ability to not only organizes data but also for his single source of truth to manage our data. . The application help you in finding specifics ruby gem but also let you add it as a favorite in order to come back to it by going to your favorite page.
+
+· The application allows you to not only check for specifics ruby gems but also to find out more about their dependencies for more info about what was used to build the gem. . The app also make use of react router for a smooth transition between pages and also allows us to make use of router specific property such as match params and push to redirect to specific pages.
 
 Area for improvement
 
-Testing:
-I am not comfortable enough with testing React component. Therefore, the app building part came first with some testing after.
+Testing: I am not comfortable enough with testing React component. Therefore, the app building part came first with some testing after.
