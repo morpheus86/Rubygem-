@@ -17,7 +17,7 @@ class Dashboard extends Component {
             <SearchBar />
           </div>
           <div className="row">
-            <div className="col s12 m6">
+            <div className="col s12 m12">
               <RubyList ruby={ruby} />
             </div>
           </div>

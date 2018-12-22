@@ -37,13 +37,12 @@ class RubyGemDetails extends Component {
                 {dependencies}
                 <div />
               </div>
+              <form onSubmit={this.handleSubmit} className="white">
+                <button className="btn pink lighten-1 z-depth-0">
+                  Save to favorite
+                </button>
+              </form>
             </div>
-
-            <form onSubmit={this.handleSubmit} className="white">
-              <button className="btn pink lighten-1 z-depth-0">
-                Save to favorite
-              </button>
-            </form>
           </div>
         );
       } else {

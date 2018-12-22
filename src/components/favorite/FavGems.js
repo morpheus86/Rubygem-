@@ -21,7 +21,10 @@ class FavGems extends Component {
         {favorite ? (
           favorite.map((fav, idx) => {
             return (
-              <div key={idx}>
+              <div
+                className="container section project-RubyGemDetails"
+                key={idx}
+              >
                 <Link to={"/project/" + idx}>
                   <div className="card z-depth-0 project-summary">
                     <div className="card-content grey-text text-darken-3">
@@ -29,11 +32,10 @@ class FavGems extends Component {
                       <p>created by {fav.authors}</p>
                       <p className="grey-text">{fav.info}</p>
                     </div>
+                    <DeleteFav fav={fav} />
                   </div>
                 </Link>
-                <div>
-                  <DeleteFav fav={fav} />
-                </div>
+                <div />
               </div>
             );
           })
@@ -48,7 +50,6 @@ class FavGems extends Component {
 }
 
 const mapState = state => {
-  // console.log(state.firebase.profile.favorites);
   return {
     auth: state.firebase.auth,
     favorite: state.firebase.profile.favorites

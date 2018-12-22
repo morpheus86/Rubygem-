@@ -54,13 +54,13 @@ class Dependency extends Component {
                   <h3>Dependencies</h3>
                   {dependencies}
                 </div>
+                <form onSubmit={this.handleSubmit} className="white">
+                  <button className="btn pink lighten-1 z-depth-0">
+                    Save to favorite
+                  </button>
+                </form>
               </div>
             </div>
-            <form onSubmit={this.handleSubmit} className="white">
-              <button className="btn pink lighten-1 z-depth-0">
-                Save to favorite
-              </button>
-            </form>
           </div>
         );
       } else {
