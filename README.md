@@ -24,9 +24,13 @@ Features / selling point
 
 · The UI can easily be maintained since the flows of information are managed between props and our redux store.
 
-· Redux was used in this project for its ability to not only organizes data but also for his single source of truth to manage our data. . The application help you in finding specifics ruby gem but also let you add it as a favorite in order to come back to it by going to your favorite page.
+· Redux was used in this project for its ability to not only organizes data but also for his single source of truth to manage our data.
 
-· The application allows you to not only check for specifics ruby gems but also to find out more about their dependencies for more info about what was used to build the gem. . The app also make use of react router for a smooth transition between pages and also allows us to make use of router specific property such as match params and push to redirect to specific pages.
+. The application help you in finding specifics ruby gem but also let you add it as a favorite in order to come back to it by going to your favorite page.
+
+· The application allows you to not only check for specifics ruby gems but also to find out more about their dependencies for more info about what was used to build the gem.
+
+. The app also make use of react router for a smooth transition between pages and also allows us to make use of router specific property such as match params and push to redirect to specific pages.
 
 Area for improvement
 

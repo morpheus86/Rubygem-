@@ -17,7 +17,8 @@ class FavGems extends Component {
     const { auth, favorite } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
-      <div className="project-list section">
+      <div className="container section project-RubyGemDetails">
+        <h1>Welcome to your favorite page</h1>
         {favorite ? (
           favorite.map((fav, idx) => {
             return (
