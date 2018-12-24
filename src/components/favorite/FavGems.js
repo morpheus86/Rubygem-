@@ -14,6 +14,7 @@ class FavGems extends Component {
     return nextProps.favorite !== this.props.favorite;
   }
   render() {
+    console.log(this.props);
     const { auth, favorite } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
@@ -26,16 +27,17 @@ class FavGems extends Component {
                 className="container section project-RubyGemDetails"
                 key={idx}
               >
-                <Link to={"/project/" + idx}>
-                  <div className="card z-depth-0 project-summary">
+                <div className="card z-depth-0 project-summary">
+                  <Link to={"/project/" + idx}>
                     <div className="card-content grey-text text-darken-3">
                       <span className="card-title">{fav.name}</span>
                       <p>created by {fav.authors}</p>
                       <p className="grey-text">{fav.info}</p>
                     </div>
-                    <DeleteFav fav={fav} />
-                  </div>
-                </Link>
+                  </Link>
+                  <DeleteFav fav={fav} />
+                </div>
+
                 <div />
               </div>
             );

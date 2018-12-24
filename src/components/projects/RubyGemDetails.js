@@ -17,15 +17,17 @@ class RubyGemDetails extends Component {
   };
   render() {
     const { auth, gems } = this.props;
-    const dependencies = gems.dependencies.development
-      ? gems.dependencies.development.map((el, idx) => {
-          return (
-            <div key={idx}>
-              <DependencySearch el={el} />
-            </div>
-          );
-        })
-      : null;
+    const dependencies = gems.dependencies.development ? (
+      gems.dependencies.development.map((el, idx) => {
+        return (
+          <div key={idx}>
+            <DependencySearch el={el} />
+          </div>
+        );
+      })
+    ) : (
+      <div>Loading ruby...</div>
+    );
 
     if (gems) {
       if (auth.uid) {
