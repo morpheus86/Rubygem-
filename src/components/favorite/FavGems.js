@@ -29,11 +29,6 @@ class FavGems extends Component {
               >
                 <div className="card z-depth-0 project-summary">
                   <Link to={"/favoritedetails/" + idx}>
-                    {/* <div className="card-content grey-text text-darken-3">
-                      <span className="card-title">{fav.name}</span>
-                      <p>created by {fav.authors}</p>
-                      <p className="grey-text">{fav.info}</p>
-                    </div> */}
                     <FavoriteSummary fav={fav} />
                   </Link>
                   <DeleteFav fav={fav} />

@@ -50,7 +50,6 @@ const mapState = (state, ownProps) => {
   const id = ownProps.match.params.id;
   const ruby = state.firebase.profile.favorites;
   const favGem = ruby ? ruby[id] : null;
-  console.log(state);
   return {
     auth: state.firebase.auth,
     gems: favGem,
