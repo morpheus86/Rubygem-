@@ -19,7 +19,7 @@ class FavGems extends Component {
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div className="container section project-RubyGemDetails">
-        <h1>Welcome to your favorite page</h1>
+        <h1>Favorite page</h1>
         {favorite ? (
           favorite.map((fav, idx) => {
             return (
