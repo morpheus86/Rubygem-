@@ -8,6 +8,7 @@ import SignUp from "./components/auth/SignUp";
 import FavGems from "./components/favorite/FavGems";
 import "./App.css";
 import Dependency from "./components/search/Dependency";
+import FavoriteDetails from "./components/favorite/FavoriteDetails";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route path="/signin" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route path="/favorite" component={FavGems} />
+            <Route path="/favoritedetails/:id" component={FavoriteDetails} />
             <Route path="/dependency" component={Dependency} />
           </Switch>
         </div>

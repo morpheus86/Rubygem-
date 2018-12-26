@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import DeleteFav from "./DeleteFav";
+import FavoriteSummary from "./FavoriteSummary";
 
 class FavGems extends Component {
   constructor(props) {
@@ -14,7 +15,6 @@ class FavGems extends Component {
     return nextProps.favorite !== this.props.favorite;
   }
   render() {
-    console.log(this.props);
     const { auth, favorite } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
@@ -28,12 +28,13 @@ class FavGems extends Component {
                 key={idx}
               >
                 <div className="card z-depth-0 project-summary">
-                  <Link to={"/project/" + idx}>
-                    <div className="card-content grey-text text-darken-3">
+                  <Link to={"/favoritedetails/" + idx}>
+                    {/* <div className="card-content grey-text text-darken-3">
                       <span className="card-title">{fav.name}</span>
                       <p>created by {fav.authors}</p>
                       <p className="grey-text">{fav.info}</p>
-                    </div>
+                    </div> */}
+                    <FavoriteSummary fav={fav} />
                   </Link>
                   <DeleteFav fav={fav} />
                 </div>
